@@ -1,0 +1,285 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="page-header-bg">
+        <div class="page-header-overlay"></div>
+    </div>
+    <div class="page-header-content">
+        <span class="page-badge" data-aos="fade-down">
+            <i class="fas fa-envelope"></i>
+            Contact Us
+        </span>
+        <h1 class="page-title" data-aos="fade-up">Get in Touch</h1>
+        <p class="page-subtitle" data-aos="fade-up" data-aos-delay="100">
+            We're here to help you find your perfect fragrance
+        </p>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section contact-section">
+    <div class="container">
+        <div class="contact-grid">
+            <!-- Contact Info -->
+            <div class="contact-info-panel" data-aos="fade-right">
+                <span class="section-badge">
+                    <i class="fas fa-headset"></i>
+                    Contact Information
+                </span>
+                <h2>Let's Connect</h2>
+                <p>
+                    Have questions about our products? Need help choosing the perfect fragrance? 
+                    Reach out to us – we're always happy to help!
+                </p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="method-icon whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="method-details">
+                            <span class="method-label">WhatsApp</span>
+                            <span class="method-value">+91 {{ whatsapp_number }}</span>
+                            <a href="https://wa.me/{{ whatsapp_number }}" class="method-link" target="_blank">
+                                Chat Now <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="method-icon upi">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <div class="method-details">
+                            <span class="method-label">UPI ID</span>
+                            <span class="method-value">{{ upi_id }}</span>
+                            <button class="method-link copy-btn" onclick="copyUPI()">
+                                <span id="copyText">Copy UPI ID</span> <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="method-icon hours">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="method-details">
+                            <span class="method-label">Business Hours</span>
+                            <span class="method-value">Monday - Saturday</span>
+                            <span class="method-sublabel">10:00 AM - 8:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-panel">
+                    <span>Follow Us:</span>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Order -->
+            <div class="quick-order-panel" data-aos="fade-left">
+                <div class="panel-header">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>Quick Order</h3>
+                </div>
+                <p>
+                    The fastest way to place an order is through WhatsApp. 
+                    Simply click the button below and send us your requirements.
+                </p>
+                
+                <div class="order-steps">
+                    <div class="order-step">
+                        <span class="step-number">1</span>
+                        <span class="step-text">Click the WhatsApp button</span>
+                    </div>
+                    <div class="order-step">
+                        <span class="step-number">2</span>
+                        <span class="step-text">Tell us the product name</span>
+                    </div>
+                    <div class="order-step">
+                        <span class="step-number">3</span>
+                        <span class="step-text">We'll confirm your order</span>
+                    </div>
+                    <div class="order-step">
+                        <span class="step-number">4</span>
+                        <span class="step-text">Pay via UPI and get delivery!</span>
+                    </div>
+                </div>
+                
+                <a href="https://wa.me/{{ whatsapp_number }}" class="btn btn-whatsapp-large" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Order on WhatsApp</span>
+                </a>
+                
+                <div class="payment-note">
+                    <i class="fas fa-info-circle"></i>
+                    <span>We accept all UPI payments, Paytm, Google Pay, PhonePe & more</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="section faq-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-badge">
+                <i class="fas fa-question-circle"></i>
+                FAQ
+            </span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        
+        <div class="faq-grid">
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="faq-question">
+                    <i class="fas fa-plus"></i>
+                    <span>How do I place an order?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Simply click on any "Buy Now" or "Order on WhatsApp" button on our website. 
+                        It will open WhatsApp with a pre-filled message. Send it to us and we'll confirm your order.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="150">
+                <div class="faq-question">
+                    <i class="fas fa-plus"></i>
+                    <span>What payment methods do you accept?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        We accept all UPI payments (Google Pay, PhonePe, Paytm, etc.) through our UPI ID: 
+                        <strong>{{ upi_id }}</strong>. We also accept bank transfers.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="faq-question">
+                    <i class="fas fa-plus"></i>
+                    <span>How long does delivery take?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        We typically deliver within 3-7 business days across India. 
+                        Delivery time may vary depending on your location.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="250">
+                <div class="faq-question">
+                    <i class="fas fa-plus"></i>
+                    <span>Are your products authentic?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Absolutely! All our products are 100% authentic and sourced directly from 
+                        manufacturers or authorized distributors.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="faq-question">
+                    <i class="fas fa-plus"></i>
+                    <span>What is your return policy?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        We accept returns within 7 days of delivery if the product is unused and 
+                        in its original packaging. Contact us on WhatsApp for return requests.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="350">
+                <div class="faq-question">
+                    <i class="fas fa-plus"></i>
+                    <span>Do you offer cash on delivery?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Currently, we only accept prepaid orders via UPI. This helps us maintain 
+                        our competitive prices and ensure faster processing.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section cta-section">
+    <div class="container">
+        <div class="cta-card" data-aos="zoom-in">
+            <div class="cta-content">
+                <h2>Still Have Questions?</h2>
+                <p>We're just a message away. Reach out to us on WhatsApp!</p>
+                <a href="https://wa.me/{{ whatsapp_number }}" class="btn btn-whatsapp-large" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Chat on WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // FAQ Accordion
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all items
+                faqItems.forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.faq-question i').classList.remove('fa-minus');
+                    i.querySelector('.faq-question i').classList.add('fa-plus');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                    item.querySelector('.faq-question i').classList.remove('fa-plus');
+                    item.querySelector('.faq-question i').classList.add('fa-minus');
+                }
+            });
+        });
+    });
+    
+    // Copy UPI Function
+    function copyUPI() {
+        const upiId = '{{ upi_id }}';
+        navigator.clipboard.writeText(upiId).then(() => {
+            const copyText = document.getElementById('copyText');
+            const originalText = copyText.textContent;
+            copyText.textContent = 'Copied!';
+            setTimeout(() => {
+                copyText.textContent = originalText;
+            }, 2000);
+        });
+    }
+</script>
+{% endblock %}

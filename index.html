@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Abyaz - Luxury Perfume & Attar Store</title>
+    <meta http-equiv="refresh" content="0;url=/static/landing.html">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .container {
+            text-align: center;
+            padding: 40px;
+            max-width: 800px;
+        }
+        .logo {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 42px;
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #888;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        .info-box {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        .info-box h2 {
+            color: #d4af37;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .credentials {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .credential-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .credential-item:last-child {
+            border-bottom: none;
+        }
+        .credential-label {
+            color: #888;
+        }
+        .credential-value {
+            color: #d4af37;
+            font-weight: 600;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37, #b8860b);
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .feature {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .feature i {
+            font-size: 32px;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+        .feature h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .feature p {
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">👑</div>
+        <h1>Al-Abyaz</h1>
+        <p>Luxury Perfume & Attar Store</p>
+        
+        <div class="info-box">
+            <h2><i class="fas fa-info-circle"></i> Django Project Ready</h2>
+            <p>This is a complete Django e-commerce project. To run the website locally:</p>
+            
+            <div style="text-align: left; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; margin: 20px 0; font-family: monospace;">
+                <p style="color: #d4af37; margin-bottom: 10px;"># Navigate to project folder</p>
+                <p style="color: #fff; margin-bottom: 15px;">cd al_abyaz</p>
+                
+                <p style="color: #d4af37; margin-bottom: 10px;"># Install dependencies</p>
+                <p style="color: #fff; margin-bottom: 15px;">pip install -r requirements.txt</p>
+                
+                <p style="color: #d4af37; margin-bottom: 10px;"># Run the server</p>
+                <p style="color: #fff; margin-bottom: 15px;">python manage.py runserver</p>
+                
+                <p style="color: #d4af37; margin-bottom: 10px;"># Access the website</p>
+                <p style="color: #fff;">http://127.0.0.1:8000/</p>
+            </div>
+            
+            <div class="credentials">
+                <h3 style="color: #d4af37; margin-bottom: 15px;"><i class="fas fa-user-shield"></i> Admin Access</h3>
+                <div class="credential-item">
+                    <span class="credential-label">Username:</span>
+                    <span class="credential-value">admin</span>
+                </div>
+                <div class="credential-item">
+                    <span class="credential-label">Password:</span>
+                    <span class="credential-value">admin</span>
+                </div>
+                <div class="credential-item">
+                    <span class="credential-label">Admin URL:</span>
+                    <span class="credential-value">/admin/</span>
+                </div>
+            </div>
+            
+            <a href="static/landing.html" class="btn">
+                <i class="fas fa-eye"></i> View Preview
+            </a>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-spray-can"></i>
+                <h3>Premium Perfumes</h3>
+                <p>100+ Products</p>
+            </div>
+            <div class="feature">
+                <i class="fab fa-whatsapp"></i>
+                <h3>WhatsApp Orders</h3>
+                <p>Easy Ordering</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-qrcode"></i>
+                <h3>UPI Payments</h3>
+                <p>Secure & Fast</p>
+            </div>
+        </div>
+        
+        <p style="margin-top: 40px; font-size: 14px;">
+            <i class="fas fa-phone"></i> WhatsApp: +91 7506516067<br>
+            <i class="fas fa-wallet"></i> UPI: sobanbalwa0@okhdfcbank
+        </p>
+    </div>
+</body>
+</html>
+
+
+
+
+<!-- for env .\env\Scripts\Activate.ps1 -->

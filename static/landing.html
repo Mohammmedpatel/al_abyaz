@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Abyaz - Luxury Perfume & Attar Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a1a;
+            --color-secondary: #2d2d2d;
+            --color-accent: #d4af37;
+            --color-accent-light: #f4d03f;
+            --color-accent-dark: #b8860b;
+            --color-white: #ffffff;
+            --color-off-white: #f8f8f8;
+            --color-gray: #888888;
+            --color-success: #25d366;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--color-off-white);
+            color: var(--color-primary);
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #0d0d0d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--color-accent);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+        
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(36px, 8vw, 72px);
+            font-weight: 700;
+            color: var(--color-white);
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--color-gray);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 32px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+            color: var(--color-white);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--color-white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+        
+        .hero-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--color-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 100px 20px;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--color-accent-dark);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 16px;
+        }
+        
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--color-gray);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: var(--color-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product-image {
+            height: 280px;
+            background: linear-gradient(135deg, #f8f8f8, #eeeeee);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image i {
+            font-size: 80px;
+            color: var(--color-gray);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+            color: var(--color-white);
+        }
+        
+        .product-info {
+            padding: 24px;
+        }
+        
+        .product-category {
+            font-size: 12px;
+            color: var(--color-accent-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin: 8px 0;
+        }
+        
+        .product-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 16px;
+        }
+        
+        .product-price {
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--color-accent-dark);
+        }
+        
+        .btn-buy {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, var(--color-success), #128c7e);
+            color: var(--color-white);
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        
+        /* Categories Section */
+        .categories-section {
+            background: var(--color-primary);
+        }
+        
+        .categories-section .section-title,
+        .categories-section .section-subtitle {
+            color: var(--color-white);
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .category-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--color-accent);
+        }
+        
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 32px;
+            color: var(--color-white);
+        }
+        
+        .category-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--color-white);
+            margin-bottom: 12px;
+        }
+        
+        .category-card p {
+            color: var(--color-gray);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+        
+        .category-link {
+            color: var(--color-accent);
+            font-weight: 500;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--color-white);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 28px;
+            color: var(--color-accent-dark);
+        }
+        
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+            font-size: 14px;
+            color: var(--color-gray);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #fafafa, #f0f0f0);
+        }
+        
+        .cta-card {
+            background: linear-gradient(135deg, var(--color-primary), #2d2d2d);
+            border-radius: 16px;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-card h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(24px, 4vw, 36px);
+            color: var(--color-white);
+            margin-bottom: 16px;
+        }
+        
+        .cta-card p {
+            color: var(--color-gray);
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn-whatsapp-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--color-success), #128c7e);
+            color: var(--color-white);
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 60px 20px 30px;
+        }
+        
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            color: var(--color-accent);
+            margin-bottom: 20px;
+        }
+        
+        .footer p {
+            color: var(--color-gray);
+            margin-bottom: 30px;
+        }
+        
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-contact span {
+            color: var(--color-gray);
+            font-size: 14px;
+        }
+        
+        .footer-contact i {
+            color: var(--color-accent);
+            margin-right: 8px;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            color: var(--color-gray);
+            font-size: 14px;
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-success), #128c7e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-size: 28px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-stats {
+                gap: 30px;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+            }
+            
+            .hero-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .section {
+                padding: 60px 20px;
+            }
+            
+            .footer-contact {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <div class="hero-badge">
+                <i class="fas fa-gem"></i>
+                <span>Premium Quality</span>
+            </div>
+            <h1 class="hero-title">
+                <span>Discover the</span>
+                <span class="highlight">Essence of Luxury</span>
+            </h1>
+            <p class="hero-subtitle">
+                Experience our exquisite collection of premium perfumes and authentic attars. 
+                Crafted for those who appreciate the finer things in life.
+            </p>
+            <div class="hero-actions">
+                <a href="#products" class="btn btn-primary">
+                    <span>Explore Collection</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="https://wa.me/7506516067" class="btn btn-outline" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Order on WhatsApp</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Products</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Happy Customers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">
+                    <i class="fas fa-star"></i>
+                    Featured Collection
+                </span>
+                <h2 class="section-title">Our Best Sellers</h2>
+                <p class="section-subtitle">Most loved fragrances by our customers</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="product-image">
+                        <div class="product-badge">Bestseller</div>
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Premium Perfumes</span>
+                        <h3 class="product-name">Royal Oud Elite</h3>
+                        <div class="product-footer">
+                            <span class="product-price">₹1,499</span>
+                            <a href="https://wa.me/7506516067?text=Hi, I want to order Royal Oud Elite (₹1,499) from Al-Abyaz" class="btn-buy" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Buy Now</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="product-image">
+                        <div class="product-badge">Featured</div>
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Authentic Attars</span>
+                        <h3 class="product-name">Musk Al Tahara</h3>
+                        <div class="product-footer">
+                            <span class="product-price">₹899</span>
+                            <a href="https://wa.me/7506516067?text=Hi, I want to order Musk Al Tahara (₹899) from Al-Abyaz" class="btn-buy" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Buy Now</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="product-image">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Combo Deals</span>
+                        <h3 class="product-name">Luxury Fragrance Set</h3>
+                        <div class="product-footer">
+                            <span class="product-price">₹2,499</span>
+                            <a href="https://wa.me/7506516067?text=Hi, I want to order Luxury Fragrance Set (₹2,499) from Al-Abyaz" class="btn-buy" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Buy Now</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="product-image">
+                        <div class="product-badge">New</div>
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Premium Perfumes</span>
+                        <h3 class="product-name">Midnight Rose</h3>
+                        <div class="product-footer">
+                            <span class="product-price">₹1,299</span>
+                            <a href="https://wa.me/7506516067?text=Hi, I want to order Midnight Rose (₹1,299) from Al-Abyaz" class="btn-buy" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Buy Now</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section categories-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">
+                    <i class="fas fa-th-large"></i>
+                    Categories
+                </span>
+                <h2 class="section-title">Browse by Category</h2>
+                <p class="section-subtitle">Find your perfect fragrance</p>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="category-icon">
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    <h3>Premium Perfumes</h3>
+                    <p>Long-lasting international fragrances</p>
+                    <a href="#products" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="category-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Authentic Attars</h3>
+                    <p>Traditional concentrated perfumes</p>
+                    <a href="#products" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="category-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Combo Deals</h3>
+                    <p>Special bundles at great prices</p>
+                    <a href="#products" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">
+                    <i class="fas fa-award"></i>
+                    Why Choose Us
+                </span>
+                <h2 class="section-title">The Al-Abyaz Difference</h2>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>100% Authentic</h3>
+                    <p>All our products are genuine and sourced directly from manufacturers.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3>Best Prices</h3>
+                    <p>Premium quality at affordable prices. Value for your money guaranteed.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Quick and reliable delivery to your doorstep across India.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Always here to help. Contact us anytime on WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-card" data-aos="zoom-in">
+                <h2>Ready to Experience Luxury?</h2>
+                <p>Order now on WhatsApp and get your favorite fragrance delivered to your doorstep.</p>
+                <a href="https://wa.me/7506516067" class="btn-whatsapp-large" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Order on WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-crown"></i> Al-Abyaz
+            </div>
+            <p>Discover the essence of luxury with our premium collection of perfumes and attars.</p>
+            <div class="footer-contact">
+                <span><i class="fab fa-whatsapp"></i> +91 7506516067</span>
+                <span><i class="fas fa-qrcode"></i> sobanbalwa0@okhdfcbank</span>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Al-Abyaz. All rights reserved. | Crafted with <i class="fas fa-heart" style="color: #e74c3c;"></i> for fragrance lovers</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/7506516067" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="hero-particles" id="particles"></div>
+    </div>
+    <div class="hero-content">
+        <div class="hero-badge" data-aos="fade-down" data-aos-delay="100">
+            <i class="fas fa-gem"></i>
+            <span>Premium Quality</span>
+        </div>
+        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
+            <span class="title-line">Discover the</span>
+            <span class="title-line highlight">Essence of Luxury</span>
+        </h1>
+        <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">
+            Experience our exquisite collection of premium perfumes and authentic attars. 
+            Crafted for those who appreciate the finer things in life.
+        </p>
+        <div class="hero-actions" data-aos="fade-up" data-aos-delay="400">
+            <a href="#products" class="btn btn-primary">
+                <span>Explore Collection</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="https://wa.me/{{ whatsapp_number }}" class="btn btn-outline" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                <span>Order on WhatsApp</span>
+            </a>
+        </div>
+        <div class="hero-stats" data-aos="fade-up" data-aos-delay="500">
+            <div class="stat-item">
+                <span class="stat-number">100+</span>
+                <span class="stat-label">Products</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Happy Customers</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Support</span>
+            </div>
+        </div>
+    </div>
+    <div class="hero-scroll">
+        <a href="#products" class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </div>
+</section>
+
+<!-- Featured Section -->
+<section class="section featured-section" id="featured">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-badge">
+                <i class="fas fa-star"></i>
+                Featured Collection
+            </span>
+            <h2 class="section-title">Our Best Sellers</h2>
+            <p class="section-subtitle">Most loved fragrances by our customers</p>
+        </div>
+        
+        <div class="products-grid">
+            {% for product in bestseller_products %}
+            <div class="product-card" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:100 }}">
+                <div class="product-badge bestseller">Bestseller</div>
+                <div class="product-image">
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                    <div class="product-placeholder">
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    {% endif %}
+                    <div class="product-overlay">
+                        <a href="{{ product.get_absolute_url }}" class="btn-view">
+                            <i class="fas fa-eye"></i>
+                            <span>View Details</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <span class="product-category">{{ product.category.name }}</span>
+                    <h3 class="product-name">{{ product.name }}</h3>
+                    {% if product.volume %}
+                    <span class="product-volume">{{ product.volume }}</span>
+                    {% endif %}
+                    <div class="product-footer">
+                        <span class="product-price">₹{{ product.price }}</span>
+                        <a href="https://wa.me/{{ whatsapp_number }}?text=Hi, I want to order {{ product.name }} (₹{{ product.price }}) from Al-Abyaz" class="btn-buy" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Buy Now</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="empty-state" data-aos="fade-up">
+                <i class="fas fa-box-open"></i>
+                <p>No bestseller products yet. Check back soon!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="section categories-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-badge">
+                <i class="fas fa-th-large"></i>
+                Categories
+            </span>
+            <h2 class="section-title">Browse by Category</h2>
+            <p class="section-subtitle">Find your perfect fragrance</p>
+        </div>
+        
+        <div class="categories-grid">
+            <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="category-icon">
+                    <i class="fas fa-spray-can"></i>
+                </div>
+                <h3>Premium Perfumes</h3>
+                <p>Long-lasting international fragrances</p>
+                <a href="#products" class="category-link">
+                    <span>Explore</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="category-icon">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <h3>Authentic Attars</h3>
+                <p>Traditional concentrated perfumes</p>
+                <a href="#products" class="category-link">
+                    <span>Explore</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="category-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h3>Combo Deals</h3>
+                <p>Special bundles at great prices</p>
+                <a href="#products" class="category-link">
+                    <span>Explore</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- All Products Section -->
+<section class="section products-section" id="products">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-badge">
+                <i class="fas fa-shopping-bag"></i>
+                Our Collection
+            </span>
+            <h2 class="section-title">All Products</h2>
+            <p class="section-subtitle">Browse our complete collection of premium fragrances</p>
+        </div>
+        
+        <!-- Filter Tabs -->
+        <div class="filter-tabs" data-aos="fade-up">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="perfume">Perfumes</button>
+            <button class="filter-btn" data-filter="attar">Attars</button>
+            <button class="filter-btn" data-filter="combo">Combos</button>
+        </div>
+        
+        <div class="products-grid" id="productsGrid">
+            {% for product in products %}
+            <div class="product-card" data-category="{{ product.product_type }}" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:100 }}">
+                {% if product.is_featured %}
+                <div class="product-badge featured">Featured</div>
+                {% endif %}
+                {% if product.is_bestseller %}
+                <div class="product-badge bestseller">Bestseller</div>
+                {% endif %}
+                <div class="product-image">
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                    <div class="product-placeholder">
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    {% endif %}
+                    <div class="product-overlay">
+                        <a href="{{ product.get_absolute_url }}" class="btn-view">
+                            <i class="fas fa-eye"></i>
+                            <span>View Details</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <span class="product-category">{{ product.category.name }}</span>
+                    <h3 class="product-name">{{ product.name }}</h3>
+                    {% if product.volume %}
+                    <span class="product-volume">{{ product.volume }}</span>
+                    {% endif %}
+                    <div class="product-footer">
+                        <span class="product-price">₹{{ product.price }}</span>
+                        <a href="https://wa.me/{{ whatsapp_number }}?text=Hi, I want to order {{ product.name }} (₹{{ product.price }}) from Al-Abyaz" class="btn-buy" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Buy Now</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="empty-state full-width" data-aos="fade-up">
+                <i class="fas fa-box-open"></i>
+                <h3>No products available</h3>
+                <p>Check back soon for our latest collection!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="section why-us-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-badge">
+                <i class="fas fa-award"></i>
+                Why Choose Us
+            </span>
+            <h2 class="section-title">The Al-Abyaz Difference</h2>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>100% Authentic</h3>
+                <p>All our products are genuine and sourced directly from manufacturers.</p>
+            </div>
+            
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">
+                    <i class="fas fa-rupee-sign"></i>
+                </div>
+                <h3>Best Prices</h3>
+                <p>Premium quality at affordable prices. Value for your money guaranteed.</p>
+            </div>
+            
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <h3>Fast Delivery</h3>
+                <p>Quick and reliable delivery to your doorstep across India.</p>
+            </div>
+            
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Always here to help. Contact us anytime on WhatsApp.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Payment Info Section -->
+<section class="section payment-section">
+    <div class="container">
+        <div class="payment-card" data-aos="fade-up">
+            <div class="payment-content">
+                <div class="payment-info">
+                    <span class="section-badge">
+                        <i class="fas fa-wallet"></i>
+                        Easy Payments
+                    </span>
+                    <h2>Simple & Secure Payment</h2>
+                    <p>Pay easily using UPI or any payment method. We accept all major payment options.</p>
+                    <div class="upi-display">
+                        <span class="upi-label">UPI ID:</span>
+                        <div class="upi-value">
+                            <span id="upiId">{{ upi_id }}</span>
+                            <button class="copy-btn" onclick="copyUPI()">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="payment-qr">
+                    <div class="qr-placeholder">
+                        <i class="fas fa-qrcode"></i>
+                        <span>Scan to Pay</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section cta-section">
+    <div class="container">
+        <div class="cta-card" data-aos="zoom-in">
+            <div class="cta-content">
+                <h2>Ready to Experience Luxury?</h2>
+                <p>Order now on WhatsApp and get your favorite fragrance delivered to your doorstep.</p>
+                <a href="https://wa.me/{{ whatsapp_number }}" class="btn btn-whatsapp-large" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Order on WhatsApp</span>
+                </a>
+                <div class="cta-contact">
+                    <span><i class="fab fa-whatsapp"></i> +91 {{ whatsapp_number }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Product Filter
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card[data-category]');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.dataset.filter;
+                
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter products
+                productCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.style.opacity = '1', 10);
+                    } else {
+                        card.style.opacity = '0';
+                        setTimeout(() => card.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+    });
+    
+    // Copy UPI Function
+    function copyUPI() {
+        const upiId = document.getElementById('upiId').textContent;
+        navigator.clipboard.writeText(upiId).then(() => {
+            const btn = document.querySelector('.copy-btn');
+            btn.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-copy"></i>';
+            }, 2000);
+        });
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<section class="breadcrumb-section">
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="{% url 'shop:product_list' %}">Home</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="{% url 'shop:product_list' %}#products">Products</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>{{ product.name }}</span>
+        </nav>
+    </div>
+</section>
+
+<!-- Product Detail Section -->
+<section class="product-detail-section">
+    <div class="container">
+        <div class="product-detail-grid">
+            <!-- Product Image -->
+            <div class="product-detail-image" data-aos="fade-right">
+                <div class="image-container">
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" id="mainImage">
+                    {% else %}
+                    <div class="product-placeholder large">
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    {% endif %}
+                    {% if product.is_featured %}
+                    <span class="detail-badge featured">Featured</span>
+                    {% endif %}
+                    {% if product.is_bestseller %}
+                    <span class="detail-badge bestseller">Bestseller</span>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Product Info -->
+            <div class="product-detail-info" data-aos="fade-left">
+                <span class="detail-category">{{ product.category.name }}</span>
+                <h1 class="detail-title">{{ product.name }}</h1>
+                
+                {% if product.volume %}
+                <div class="detail-volume">
+                    <i class="fas fa-flask"></i>
+                    <span>{{ product.volume }}</span>
+                </div>
+                {% endif %}
+                
+                <div class="detail-price">
+                    <span class="price-current">₹{{ product.price }}</span>
+                    {% if product.stock > 0 %}
+                    <span class="stock-status in-stock">
+                        <i class="fas fa-check-circle"></i>
+                        In Stock
+                    </span>
+                    {% else %}
+                    <span class="stock-status out-stock">
+                        <i class="fas fa-times-circle"></i>
+                        Out of Stock
+                    </span>
+                    {% endif %}
+                </div>
+                
+                <div class="detail-description">
+                    <h3>Description</h3>
+                    <p>{{ product.description }}</p>
+                </div>
+                
+                {% if product.fragrance_notes %}
+                <div class="fragrance-notes">
+                    <h3>Fragrance Notes</h3>
+                    <p>{{ product.fragrance_notes }}</p>
+                </div>
+                {% endif %}
+                
+                <div class="detail-actions">
+                    <a href="https://wa.me/{{ whatsapp_number }}?text=Hi, I want to order {{ product.name }} (₹{{ product.price }}) from Al-Abyaz" class="btn btn-whatsapp-large" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Order on WhatsApp</span>
+                    </a>
+                </div>
+                
+                <div class="payment-info-box">
+                    <div class="payment-item">
+                        <i class="fas fa-qrcode"></i>
+                        <div>
+                            <span class="label">UPI ID</span>
+                            <span class="value">{{ upi_id }}</span>
+                        </div>
+                        <button class="copy-btn" onclick="copyUPI()">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="payment-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <span class="label">WhatsApp</span>
+                            <span class="value">+91 {{ whatsapp_number }}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trust-badges">
+                    <div class="trust-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>100% Authentic</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-truck"></i>
+                        <span>Fast Delivery</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-undo"></i>
+                        <span>Easy Returns</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Products -->
+{% if related_products %}
+<section class="section related-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-badge">
+                <i class="fas fa-heart"></i>
+                You May Also Like
+            </span>
+            <h2 class="section-title">Related Products</h2>
+        </div>
+        
+        <div class="products-grid">
+            {% for related in related_products %}
+            <div class="product-card" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:100 }}">
+                <div class="product-image">
+                    {% if related.image %}
+                    <img src="{{ related.image.url }}" alt="{{ related.name }}">
+                    {% else %}
+                    <div class="product-placeholder">
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    {% endif %}
+                    <div class="product-overlay">
+                        <a href="{{ related.get_absolute_url }}" class="btn-view">
+                            <i class="fas fa-eye"></i>
+                            <span>View Details</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <span class="product-category">{{ related.category.name }}</span>
+                    <h3 class="product-name">{{ related.name }}</h3>
+                    {% if related.volume %}
+                    <span class="product-volume">{{ related.volume }}</span>
+                    {% endif %}
+                    <div class="product-footer">
+                        <span class="product-price">₹{{ related.price }}</span>
+                        <a href="https://wa.me/{{ whatsapp_number }}?text=Hi, I want to order {{ related.name }} (₹{{ related.price }}) from Al-Abyaz" class="btn-buy" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Buy Now</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Order CTA Section -->
+<section class="section cta-section">
+    <div class="container">
+        <div class="cta-card" data-aos="zoom-in">
+            <div class="cta-content">
+                <h2>Ready to Order?</h2>
+                <p>Get this amazing fragrance delivered to your doorstep. Order now on WhatsApp!</p>
+                <a href="https://wa.me/{{ whatsapp_number }}?text=Hi, I want to order {{ product.name }} (₹{{ product.price }}) from Al-Abyaz" class="btn btn-whatsapp-large" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Order Now</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Copy UPI Function
+    function copyUPI() {
+        const upiId = '{{ upi_id }}';
+        navigator.clipboard.writeText(upiId).then(() => {
+            const btn = document.querySelector('.copy-btn');
+            btn.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-copy"></i>';
+            }, 2000);
+        });
+    }
+</script>
+{% endblock %}
