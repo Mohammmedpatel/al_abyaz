@@ -1,0 +1,1 @@
+web: gunicorn al_abyaz.wsgi
