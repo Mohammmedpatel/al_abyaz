@@ -31,6 +31,8 @@ USE_X_FORWARDED_HOST = True
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = "Lax"
+SESSION_COOKIE_SAMESITE = "Lax"
 
 # Application definition
 
@@ -53,7 +55,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
 ]
 
 ROOT_URLCONF = 'al_abyaz.urls'
