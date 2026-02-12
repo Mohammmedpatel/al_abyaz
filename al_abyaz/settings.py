@@ -5,6 +5,10 @@ Django settings for al_abyaz project.
 from pathlib import Path
 import os
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -134,8 +138,16 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media files
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / 'media'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'daqf4yphk',
+    'API_KEY': '777572259776131',
+    'API_SECRET': 'bj9imblN5ehfCPWrqB-X7O2BnYk',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
