@@ -22,7 +22,7 @@ SECRET_KEY = "your-secret-key"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['al-abyaz.pythonanywhere.com']
+ALLOWED_HOSTS = ['mohammedmolapiya.pythonanywhere.com']
 
 
 
